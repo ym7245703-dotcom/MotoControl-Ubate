@@ -2,7 +2,7 @@
 
 Aplicación web para la gestión de un taller de motocicletas en Ubaté (Cundinamarca).
 
-**Integrantes:** _(escriba aquí los nombres del equipo)_
+**Integrantes:** _Maite Poveda, Jhonatan Piraquive, Nicolas Chacon, Alvaro Quiroga, Karen Montaño_
 
 ## Objetivo del proyecto
 Controlar de forma sencilla la operación de un taller de motos: registrar clientes y
