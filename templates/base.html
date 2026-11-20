@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MotoControl Ubaté</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+  <h1>🏍️ MotoControl Ubaté</h1>
+  <nav>
+    <a href="{{ url_for('inicio') }}">Inicio</a>
+    <a href="{{ url_for('clientes') }}">Clientes</a><a href="{{ url_for('motos') }}">Motos</a>
+    <a href="{{ url_for('ordenes') }}">Órdenes</a><a href="{{ url_for('cola') }}">Cola</a>
+    <a href="{{ url_for('repuestos') }}">Repuestos</a>
+    <a href="{{ url_for('historial') }}">Historial</a>
+    <a href="{{ url_for('recordatorios') }}">Recordatorios</a>
+    <a href="{{ url_for('consejos') }}">Consejos</a>
+  </nav>
+</header>
+<main>
+  {% for cat, txt in get_flashed_messages(with_categories=true) %}
+  <p class="msg {{ cat }}">{{ txt }}</p>
+  {% endfor %}
+  {% block contenido %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>{{ titulo }}</h2>
+<div class="formularios">
+{% for f in formularios %}
+  <form method="{{ f.metodo or 'post' }}" action="{{ f.accion }}" class="tarjeta">
+    <h3>{{ f.titulo }}</h3>
+    {% for c in f.campos %}
+    <label>{{ c.l }}
+      {% if c.opciones %}
+      <select name="{{ c.n }}" required>
+        {% for v, t in c.opciones %}<option value="{{ v }}">{{ t }}</option>{% endfor %}
+      </select>
+      {% else %}
+      <input name="{{ c.n }}" type="{{ c.t }}" {% if c.t == 'number' %}min="0" step="{{ c.step or 1 }}"{% endif %} required>
+      {% endif %}
+    </label>
+    {% endfor %}
+    <button>{{ f.boton or 'Guardar' }}</button>
+  </form>
+{% endfor %}
+</div>
+{% if columnas %}
+<div class="tabla">
+<table>
+  <thead><tr>{% for k, t in columnas %}<th>{{ t }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for r in filas %}<tr>{% for k, t in columnas %}<td>{{ r[k] }}</td>{% endfor %}</tr>
+  {% else %}<tr><td colspan="{{ columnas|length }}">Sin registros.</td></tr>{% endfor %}
+  </tbody>
+</table>
+</div>
+{% endif %}
+{% if lista %}<ul>{% for i in lista %}<li>{{ i }}</li>{% endfor %}</ul>{% endif %}
+{% endblock %}
